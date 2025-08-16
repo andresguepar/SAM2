@@ -42,6 +42,10 @@ jobs:
         pip install -e .
         pip install pytest pytest-cov pytest-xdist
     
+    - name: Test model loading
+      run: |
+        python -c "from sam2.build_sam import build_sam2_video_predictor; print('Model loading test passed')"
+    
     - name: Run unit tests
       run: |
         pytest tests/ -v --cov=sam2 --cov-report=xml --cov-report=html
