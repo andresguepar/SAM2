@@ -9,3 +9,51 @@ _C.*
 outputs/*
 checkpoints/*.pt
 demo/backend/checkpoints/*.pt
+
+# Exclude large model checkpoints
+checkpoints/*.pt
+checkpoints/*.pth
+checkpoints/*.ckpt
+
+# Exclude video files
+demo/data/gallery/*.mp4
+demo/data/gallery/*.avi
+demo/data/gallery/*.mov
+
+# Exclude output directories
+output/
+outputs/
+results/
+
+# Exclude personal test files
+test1.py
+personal_*.py
+# Exclude local test files with absolute paths
+test1.py
+
+# Exclude environment files
+.env
+.env.local
+.env.production
+
+# Exclude large data files
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Exclude model files
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Exclude logs
+*.log
+logs/
+
+# Exclude temporary files
+*.tmp
+*.temp
+temp/
+tmp/
