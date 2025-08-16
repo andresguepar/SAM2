@@ -98,7 +98,7 @@ class TestSAMIntegration:
         mask[25:75, 25:75] = 1
         
         # Test metrics calculation
-        from tests.metrics_utils import calculate_mask_metrics
+        from .metrics_utils import calculate_mask_metrics
         metrics = calculate_mask_metrics(mask)
         
         assert metrics['area'] == 2500  # 50x50 square
