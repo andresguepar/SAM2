@@ -16,4 +16,7 @@ pytest-xdist>=2.0.0
 
 # Optional dependencies
 tqdm>=4.60.0
-requests>=2.25.0 
+requests>=2.25.0
+
+# SAM2 specific requirements
+# Note: sam-2 requires Python >=3.10.0 
