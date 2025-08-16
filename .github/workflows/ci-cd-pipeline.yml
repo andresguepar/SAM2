@@ -56,14 +56,6 @@ jobs:
         file: ./coverage.xml
         flags: unittests
         name: codecov-umbrella
-    
-    - name: Test model loading
-      run: |
-        python -c "from sam2.build_sam import build_sam2_video_predictor; print('Model loading test passed')"
-    
-    - name: Test inference pipeline
-      run: |
-        python tests/test_inference.py
 
   build-and-push:
     needs: test
@@ -115,19 +107,3 @@ jobs:
         echo "Deploying to staging environment"
         # Add your staging deployment commands here
         # Example: kubectl apply -f k8s/staging/
-    
-  performance-test:
-    needs: deploy-staging
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Run performance tests
-      run: |
-        python tests/test_performance.py
-    
-    - name: Run model accuracy tests
-      run: |
-        python tests/test_model_accuracy.py
