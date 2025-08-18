@@ -81,8 +81,8 @@ jobs:
         file: ./backend.Dockerfile
         push: true
         tags: |
-          sam2/backend:latest
-          sam2/backend:${{ github.sha }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/sam2-backend:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/sam2-backend:${{ github.sha }}
     
     - name: Build and push frontend
       uses: docker/build-push-action@v5
@@ -91,8 +91,8 @@ jobs:
         file: ./demo/frontend/frontend.Dockerfile
         push: true
         tags: |
-          sam2/frontend:latest
-          sam2/frontend:${{ github.sha }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/sam2-frontend:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/sam2-frontend:${{ github.sha }}
 
   deploy-staging:
     needs: build-and-push
@@ -105,8 +105,8 @@ jobs:
     - name: Deploy to staging
       run: |
         echo "Deploying to staging environment"
-        echo "✅ Backend image: sam2/backend:${{ github.sha }}"
-        echo "✅ Frontend image: sam2/frontend:${{ github.sha }}"
+        echo "✅ Backend image: ${{ secrets.DOCKERHUB_USERNAME }}/sam2-backend:${{ github.sha }}"
+        echo "✅ Frontend image: ${{ secrets.DOCKERHUB_USERNAME }}/sam2-frontend:${{ github.sha }}"
         echo "🚀 Staging deployment completed successfully!"
         # Add your staging deployment commands here
         # Example: kubectl apply -f k8s/staging/
